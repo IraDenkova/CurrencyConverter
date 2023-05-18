@@ -1,0 +1,43 @@
+<div class="container">
+  <h1 class="title">Currency Converter</h1>
+  <div class="wrapper">
+    <div class="inputBox">
+      <div>
+        <input 
+          class="input" 
+          type="text" 
+          [(ngModel)]="baseAmount" 
+          (input)="convertCurrency()" 
+          (input)="onBaseAmountChange()" 
+          (focus)=" onFirstInputFocus=true" 
+          (blur)="onFirstInputFocus = false" 
+          appPositiveNumberOnly>
+        <div class="line" [@lineAnimation]="onFirstInputFocus ? 'in' : 'out'"></div>
+      </div>
+      <select class="select" [(ngModel)]="baseCurrency" (change)="convertCurrency()">
+        <option value="UAH">UAH</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+      </select>
+    </div>
+    <img class="arrows" src="../../assets/arrows.svg" alt="arrows">
+    <div class="inputBox">
+      <div>
+        <input 
+          class="input" 
+          type="text" 
+          [(ngModel)]="targetAmount" 
+          (input)="onTargetAmountChange()" 
+          (focus)="onSecondInputFocus = true"
+          (blur)="onSecondInputFocus = false" 
+          appPositiveNumberOnly>
+        <div class="line" [@lineAnimation]="onSecondInputFocus ? 'in' : 'out'"></div>
+      </div>
+      <select class="select" [(ngModel)]="targetCurrency" (change)="convertCurrency()">
+        <option value="UAH">UAH</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+      </select>
+    </div>
+  </div>
+</div>
